@@ -13,7 +13,7 @@ return {
       },
     },
     opts = function()
-      return require "configs.telescope"
+      return require("configs.finder").telescope()
     end,
   },
 
