@@ -8,7 +8,7 @@ return {
     cmd = {
       "DiffviewOpen",
       "DiffviewClose",
-      "DiffviewLogs",
+      "DiffviewLog",
       "DiffviewRefresh",
     },
     default_args = {

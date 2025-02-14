@@ -92,6 +92,7 @@ map(
   "<cmd>:lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
   opts "Telescope live grep args"
 )
+map("n", "<leader>fm", "<cmd>Telescope marks<CR>", opts "Telescope marks")
 map("n", "<leader>fj", "<cmd>Telescope jumplist<CR>", opts "Telescope jumplist")
 map("n", "<leader>fi", "<cmd>Telescope gh issues<CR>", opts "Telescope gh issues")
 map("n", "<leader>fp", "<cmd>Telescope gh pull_request<CR>", opts "Telescope gh pull requests")
@@ -116,9 +117,9 @@ map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", opts "Debugger ru
 
 -- Diagnostics
 map("n", "<Leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts "Show diagnostics float")
-map("n", "<leader>fx", "<cmd>Telescope quickfix<CR>", opts "Telescope quickfix")
-map("n", "<leader>fs", "<cmd>Telescope spell_suggest<CR>", opts "Telescope spell suggest")
-map("n", "<leader>fe", "<cmd>Telescope diagnostics<CR>", opts "Telescope diagnostics")
+map("n", "<leader>fq", "<cmd>Telescope quickfix<CR>", opts "Telescope quickfix")
+map("n", "<leader>ls", "<cmd>Telescope spell_suggest<CR>", opts "Telescope spell suggest")
+map("n", "<leader>ld", "<cmd>Telescope diagnostics<CR>", opts "Telescope diagnostics")
 
 -- LSP
 map("n", "<leader>lr", "<cmd>Telescope lsp_references<CR>", opts "Telescope references")
@@ -181,7 +182,7 @@ map("n", "<leader>gs", gitsigns.stage_hunk, opts "Gitsings stage hunk")
 map("n", "<leader>gr", gitsigns.reset_hunk, opts "Gitsigns Reset hunk")
 map("n", "<leader>gS", gitsigns.stage_buffer, opts "Gitsigns stage buffer")
 map("n", "<leader>gR", gitsigns.reset_buffer, opts "Gitsigns reset buffer")
-map("n", "<leader>gh", gitsigns.preview_hunk, opts "Gitsigns preview hunk")
+map("n", "<leader>gp", gitsigns.preview_hunk, opts "Gitsigns preview hunk")
 map("n", "<leader>gi", gitsigns.preview_hunk_inline, opts "Gitsigns preview hunk inline")
 map("n", "<leader>gb", function()
   gitsigns.blame_line { full = true }
@@ -191,7 +192,14 @@ map("n", "<leader>tb", gitsigns.toggle_current_line_blame, opts "Gitsigns toggle
 map("n", "<leader>td", gitsigns.toggle_deleted, opts "Gitsigns toggle deleted lines")
 map("n", "<leader>tw", gitsigns.toggle_word_diff, opts "Gitsigns toggle word diff in hunks")
 map("n", "<Leader>ga", "<cmd>DiffviewOpen<CR>", opts "Diff view all current changes")
-map("n", "<Leader>gp", "<cmd>DiffviewOpen origin/HEAD...HEAD<CR>", opts "Diff view against base (for PRs)")
+map(
+  "n",
+  "<Leader>gA",
+  "<cmd>DiffviewOpen origin/main...HEAD --imply-local<CR>",
+  opts "Diff view against base (for PRs)"
+)
+map("n", "<Leader>gh", "<cmd>DiffviewFileHistory %<CR>", opts "Diff view current file history")
+map("n", "<Leader>gH", "<cmd>DiffviewFileHistory --range=origin/main...HEAD<CR>", opts "Diff view current file history")
 map("n", "<leader>gd", gitsigns.diffthis, opts "Gitsigns diff against index")
 map("n", "<leader>gD", function()
   gitsigns.diffthis "~"
