@@ -9,7 +9,7 @@ end
 -- Exit
 map("i", "jk", "<ESC>")
 map("n", "<leader>jk", "<cmd>nohl<CR>", opts "Clear search highlight")
-map({ "n", "i" }, "<leader>q", "<cmd>q<CR>", opts "Close buffer")
+map({ "n", "i", "t" }, "<leader>q", "<cmd>q<CR>", opts "Close buffer")
 map({ "n", "i" }, "<leader>X", "<cmd>tabclose<CR>", opts "Close tab")
 map({ "n", "i" }, "<leader>Q", "<cmd>quitall!<CR>", opts "Quit all")
 map({ "n", "i" }, "<c-z>", "<cmd>quitall!<CR>", opts "Quit all") -- Enforcing NvChad quit cmd to leave properly
@@ -99,6 +99,32 @@ map("n", "<leader>fp", "<cmd>Telescope gh pull_request<CR>", opts "Telescope gh 
 map("n", "[c", function()
   require("treesitter-context").go_to_context(vim.v.count1)
 end, opts "Go to context")
+
+local list = require("harpoon"):list()
+local harpoon_maps = {
+  hl = function()
+    require("configs.finder").toggle_harpoon(list)
+  end,
+  ha = function()
+    list:add()
+  end,
+  hn = function()
+    list:next()
+  end,
+  hp = function()
+    list:prev()
+  end,
+}
+
+map("n", "<leader>hl", harpoon_maps.hl, opts "Open harpoon window")
+map("n", "<leader>ha", harpoon_maps.ha, opts "Add file")
+map("n", "<leader>hn", harpoon_maps.hn, opts "Next file")
+map("n", "<leader>hp", harpoon_maps.hp, opts "Prev file")
+for ii = 1, 4 do
+  map("n", "<leader>" .. ii, function()
+    list:select(ii)
+  end, opts("Select file" .. ii))
+end
 
 -- Debugging
 map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", opts "Debugger step into")
