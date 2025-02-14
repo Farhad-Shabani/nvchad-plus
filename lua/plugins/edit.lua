@@ -1,5 +1,19 @@
 return {
-  { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter/nvim-treesitter" },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "BufReadPost",
+    opts = {
+      throttle = true,
+      max_lines = 0,
+      patterns = {
+        default = {
+          "class",
+          "function",
+          "method",
+        },
+      },
+    },
+  },
 
   {
     "kylechui/nvim-surround",

@@ -8,6 +8,7 @@ end
 
 -- Exit
 map("i", "jk", "<ESC>")
+map("n", "<leader>jk", "<cmd>nohl<CR>", opts "Clear search highlight")
 map({ "n", "i" }, "<leader>q", "<cmd>q<CR>", opts "Close buffer")
 map({ "n", "i" }, "<leader>X", "<cmd>tabclose<CR>", opts "Close tab")
 map({ "n", "i" }, "<leader>Q", "<cmd>quitall!<CR>", opts "Quit all")
@@ -24,20 +25,16 @@ map(
 )
 map({ "n", "i" }, "<leader>W", "<cmd>wa<CR><cmd>qa<CR>", opts "Save all buffers and quit")
 
--- Modify text without altering the registers
+-- Yank and paste
 map({ "v", "x" }, "<leader>p", '"_dP', opts "Delete w/o storing in register and paste")
+map({ "n", "v" }, "<leader>y", '"ay', opts "Yank to 'a' register")
+map({ "v", "x" }, "<leader>pa", '"_d"aP', opts "Delete and paste from 'a' register")
+
+-- Modify without altering registers
 map({ "n", "v" }, "x", '"_x', opts "Delete single char, w/o storing in register")
 map({ "n", "v" }, "X", '"_X', opts "Delete single char before cursor, w/o storing in register")
 map({ "n", "v" }, "c", '"_c', opts "Change, w/o storing in register")
 map({ "n", "v" }, "C", '"_C', opts "Change to EOL, w/o storing in register")
--- map({ "n", "v" }, "d", '"_d', opts "Delete, w/o storing in register")
--- map({ "n", "v" }, "D", '"_D', opts "Delete to EOL, w/o storing in register")
-
--- Better clipboard
-map({ "n", "v" }, "<leader>c", '"+c', opts "Change and copy to clipboard")
-map({ "n", "v" }, "<leader>C", '"+C', opts "Change to EOL and copy to clipboard")
--- map({ "n", "v" }, "<leader>d", '"+d', opts "Delete and copy to clipboard")
--- map({ "n", "v" }, "<leader>D", '"+D', opts "Delete to EOL and copy to clipboard")
 
 -- Center movement on screen
 map("n", "<C-d>", "<C-d>zz", opts "Scroll down and recenter")
@@ -54,13 +51,23 @@ map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
+-- Increase/Decrease numbers
+map("n", "<leader>+", "<C-a>", opts "Increase number")
+map("n", "<leader>-", "<C-x>", opts "Increase number")
+
 -- Resize windows
 map("n", "<A-C-l>", "<cmd>vertical resize -2<cr>", opts "Decrease Window Width")
 map("n", "<A-C-h>", "<cmd>vertical resize +2<cr>", opts "Increase Window Width")
 map("n", "<A-C-j>", "<cmd>resize -2<cr>", opts "Decrease Window Height")
 map("n", "<A-C-k>", "<cmd>resize +2<cr>", opts "Increase Window Height")
 
--- Search
+-- Window management
+map("n", "<leader>sv", "<C-w>v", opts "Split window vertically")
+map("n", "<leader>sh", "<C-w>s", opts "Split window horizontally")
+map("n", "<leader>se", "<C-w>=", opts "Make splits equal size")
+map("n", "<leader>sx", "<cmd>close<CR>", opts "Close current split")
+
+-- Find
 map("n", "<Leader>f", "<cmd>Telescope resume<CR>", opts "Telescope resume last search")
 map(
   "n",
@@ -86,6 +93,11 @@ map(
   opts "Telescope live grep args"
 )
 map("n", "<leader>fj", "<cmd>Telescope jumplist<CR>", opts "Telescope jumplist")
+map("n", "<leader>fi", "<cmd>Telescope gh issues<CR>", opts "Telescope gh issues")
+map("n", "<leader>fp", "<cmd>Telescope gh pull_request<CR>", opts "Telescope gh pull requests")
+map("n", "[c", function()
+  require("treesitter-context").go_to_context(vim.v.count1)
+end, opts "Go to context")
 
 -- Debugging
 map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", opts "Debugger step into")
@@ -145,23 +157,22 @@ map("n", "<leader>gB", "<cmd>Telescope git_branches<CR>", opts "Telescope git br
 map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", opts "Telescope git commits (repository)")
 map("n", "<leader>gC", "<cmd>Telescope git_bcommits<CR>", opts "Telescope git commits (current file)")
 map("n", "<Leader>gn", "<cmd>Neogit<CR>", opts "Neogit open")
-map("n", "<Leader>ga", "<cmd>DiffviewOpen<CR>", opts "Diff view all current changes")
 map("n", "<Leader>gg", "<cmd>GBrowse<CR>", opts "Open current file in web")
 map("n", "<Leader>oi", "<cmd>Octo issue list<CR>", opts "Octo issue list")
 map("n", "<Leader>op", "<cmd>Octo pr list<CR>", opts "Octo PR list")
 map("n", "<Leader>or", "<cmd>Octo review<CR>", opts "Octo review")
 
 local gitsigns = require "gitsigns"
-map("n", "]c", function()
+map("n", "]h", function()
   if vim.wo.diff then
-    vim.cmd.normal { "]c", bang = true }
+    vim.cmd.normal { "]h", bang = true }
   else
     gitsigns.nav_hunk "next"
   end
 end, opts "Gitsigns next git hunk")
-map("n", "[c", function()
+map("n", "[h", function()
   if vim.wo.diff then
-    vim.cmd.normal { "[c", bang = true }
+    vim.cmd.normal { "[h", bang = true }
   else
     gitsigns.nav_hunk "prev"
   end
@@ -170,7 +181,7 @@ map("n", "<leader>gs", gitsigns.stage_hunk, opts "Gitsings stage hunk")
 map("n", "<leader>gr", gitsigns.reset_hunk, opts "Gitsigns Reset hunk")
 map("n", "<leader>gS", gitsigns.stage_buffer, opts "Gitsigns stage buffer")
 map("n", "<leader>gR", gitsigns.reset_buffer, opts "Gitsigns reset buffer")
-map("n", "<leader>gp", gitsigns.preview_hunk, opts "Gitsigns preview hunk")
+map("n", "<leader>gh", gitsigns.preview_hunk, opts "Gitsigns preview hunk")
 map("n", "<leader>gi", gitsigns.preview_hunk_inline, opts "Gitsigns preview hunk inline")
 map("n", "<leader>gb", function()
   gitsigns.blame_line { full = true }
@@ -179,6 +190,8 @@ end, opts "Gitsings blame line")
 map("n", "<leader>tb", gitsigns.toggle_current_line_blame, opts "Gitsigns toggle current line blame")
 map("n", "<leader>td", gitsigns.toggle_deleted, opts "Gitsigns toggle deleted lines")
 map("n", "<leader>tw", gitsigns.toggle_word_diff, opts "Gitsigns toggle word diff in hunks")
+map("n", "<Leader>ga", "<cmd>DiffviewOpen<CR>", opts "Diff view all current changes")
+map("n", "<Leader>gp", "<cmd>DiffviewOpen origin/HEAD...HEAD<CR>", opts "Diff view against base (for PRs)")
 map("n", "<leader>gd", gitsigns.diffthis, opts "Gitsigns diff against index")
 map("n", "<leader>gD", function()
   gitsigns.diffthis "~"
@@ -187,4 +200,5 @@ map("n", "<leader>gQ", function()
   gitsigns.setqflist "all"
 end, opts "Gitsings add all hunks to quickfix")
 map("n", "<leader>gq", gitsigns.setqflist, opts "Gitsigns add buffer hunks to quickfix")
-map({ "o", "x" }, "gh", "<cmd>Gitsigns select_hunk<CR>", opts "Gitsigns select hunk")
+map({ "o", "x" }, "gv", "<cmd>Gitsigns select_hunk<CR>", opts "Gitsigns select hunk")
+map("n", "ga", require("configs/nvim-tree").git_add, opts "Git add")

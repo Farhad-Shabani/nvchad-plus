@@ -70,11 +70,11 @@ return {
     opts = {
       logStatements = {
         debugLog = {
-          cairo = 'println!("{{var}}: {:?}", {{var}});',
-          rust = 'println!("{{var}}: {:?}", {{var}});',
+          cairo = 'println!("{{var}}: {:?}", {{var}});  // 🪚',
+          rust = 'println!("{{var}}: {:?}", {{var}});  // 🪚',
         },
         emojiLog = {
-          cairo = 'println!("CHECKPOINT!");',
+          cairo = 'println!("CHECKPOINT!");  // 🪚',
         },
       },
     },

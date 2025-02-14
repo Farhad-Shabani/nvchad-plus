@@ -46,13 +46,7 @@ autocmd("BufReadPost", {
 autocmd("User", {
   pattern = "*",
   callback = function()
-    vim.cmd [[
-      " Better visibility for Git diffs in OneDark theme
-      highlight DiffAdd      guibg=#1e2a2e guifg=#a3be8c gui=NONE
-      highlight DiffChange   guibg=#242a30 guifg=#abb2bf gui=NONE
-      highlight DiffDelete   guibg=#2a1e1f guifg=#e06c75 gui=NONE
-      highlight DiffText     guibg=#4a2f00 guifg=#ffcc66 gui=NONE
-    ]]
+    require("configs.git").diff_hl()
   end,
 })
 

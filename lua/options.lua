@@ -1,9 +1,6 @@
 local g = vim.g
 local o = vim.o
 
-g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
-g.mapleader = " "
-g.maplocalleader = "\\"
 g.markdown_fenced_languages = {
   "ts=typescript",
 }
@@ -12,13 +9,16 @@ g.markdown_fenced_languages = {
 dofile(g.base46_cache .. "defaults")
 dofile(g.base46_cache .. "statusline")
 
-o.clipboard = "unnamedplus"
 o.cursorlineopt = "both"
 o.relativenumber = true
 o.number = true
 o.ruler = true
 o.autoread = true
 o.mouse = "a"
+o.termguicolors = true
+o.expandtab = true
+o.autoindent = true
+o.signcolumn = "yes"
 
 local autocmd = vim.api.nvim_create_autocmd
 

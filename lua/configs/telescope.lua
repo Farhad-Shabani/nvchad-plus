@@ -27,7 +27,7 @@ local configs = {
       -- layout_config = { mirror=true }, -- mirror preview pane
     },
   },
-  extension_list = { "live_grep_args", "fzf", "frequency", "file_browser" },
+  extension_list = { "live_grep_args", "fzf", "frequency", "file_browser", "lazygit" },
 }
 
 return vim.tbl_deep_extend("force", defaults, configs)

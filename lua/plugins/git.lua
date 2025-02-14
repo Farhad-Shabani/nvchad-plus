@@ -1,11 +1,19 @@
 return {
   {
     "sindrets/diffview.nvim",
-    lazy = false,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
     config = true,
+    cmd = {
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewLogs",
+      "DiffviewRefresh",
+    },
+    default_args = {
+      DiffviewOpen = { "--imply-local" },
+    },
   },
 
   {
@@ -38,14 +46,29 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim",
     },
-    config = function()
-      require("telescope").load_extension "lazygit"
-    end,
     -- setting the keybinding for LazyGit with 'keys' is recommended in
     -- order to load the plugin when the command is run for the first time
     keys = {
       { "<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit", noremap = true, silent = true },
     },
+  },
+
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("configs.git").conflict_hl()
+      require("git-conflict").setup {
+        default_mappings = true,
+        highlights = {
+          incoming = "GitConflictIncoming",
+          current = "GitConflictCurrent",
+          ancestor = "GitConflictAncestor",
+          none = "GitConflictNone",
+        },
+      }
+    end,
   },
 
   {
