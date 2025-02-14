@@ -13,7 +13,7 @@ return {
       },
     },
     opts = function()
-      return require "configs.telescope"
+      return require("configs.find").telescope()
     end,
   },
 
@@ -23,16 +23,4 @@ return {
   },
 
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = {
-      { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-    },
-    event = "VeryLazy",
-    config = function()
-      require("harpoon").setup {}
-    end,
-  },
 }

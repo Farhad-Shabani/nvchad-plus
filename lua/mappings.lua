@@ -97,10 +97,11 @@ map("n", "[c", function()
   require("treesitter-context").go_to_context(vim.v.count1)
 end, opts "Go to context")
 
+-- Navigation
 local list = require("harpoon"):list()
 local harpoon_maps = {
   hl = function()
-    require("configs.finder").toggle_harpoon(list)
+    require("configs.nav").toggle_harpoon(list)
   end,
   ha = function()
     list:add()
@@ -112,7 +113,6 @@ local harpoon_maps = {
     list:prev()
   end,
 }
-
 map("n", "<leader>hl", harpoon_maps.hl, opts "Open harpoon window")
 map("n", "<leader>ha", harpoon_maps.ha, opts "Add file")
 map("n", "<leader>hn", harpoon_maps.hn, opts "Next file")

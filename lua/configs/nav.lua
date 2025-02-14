@@ -1,6 +1,6 @@
 local M = {}
 
-function M.toggle_harpoon(harpoon_files)
+function M.toggle_telescope(harpoon_files)
   local finder = function()
     local paths = {}
     for _, item in ipairs(harpoon_files.items) do

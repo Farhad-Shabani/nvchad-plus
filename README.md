@@ -12,7 +12,8 @@ This repository extends [NvChad](https://github.com/NvChad/NvChad) with addition
 
 ## 🔌 Additional Plugins
 
-- **Finder**: `telescope.nvim` extended with `live_grep_args`, `fzf`, `frequency`, `file_browser`, `harpoon`
+- **Finder**: `telescope.nvim` extended with `live_grep_args`, `fzf`, `frequency`, `file_browser`
+- **Navigation**: `harpoon`
 - **Editing**: `nvim-treesitter-context`, `nvim-surround`, `nvim-rip-substitute`, `nvim-ts-autotag`
 - **Debugging**: `nvim-dap`, `nvim-dap-ui`, `trouble.nvim`, `nvim-chainsaw`
 - **Git**: `lazygit`, `octo.nvim`, `neogit`, `diffview.nvim`, `git-conflict.nvim`, `vim-fugitive`, `vim-rhubarb`
