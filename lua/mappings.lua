@@ -11,8 +11,6 @@ map("i", "jk", "<ESC>")
 map("n", "<leader>jk", "<cmd>nohl<CR>", opts "Clear search highlight")
 map({ "n", "i", "t" }, "<leader>q", "<cmd>q<CR>", opts "Close buffer")
 map({ "n", "i" }, "<leader>X", "<cmd>tabclose<CR>", opts "Close tab")
-map({ "n", "i" }, "<leader>Q", "<cmd>quitall!<CR>", opts "Quit all")
-map({ "n", "i" }, "<c-z>", "<cmd>quitall!<CR>", opts "Quit all") -- Enforcing NvChad quit cmd to leave properly
 -- map("t", "<Esc>", [[<C-\><C-n>]], opts "Exit terminal view")
 
 -- Save
@@ -23,7 +21,6 @@ map(
   '<cmd>w<CR><cmd>:lua require("nvchad.tabufline").close_buffer()<CR>',
   opts "Save buffer and close"
 )
-map({ "n", "i" }, "<leader>W", "<cmd>wa<CR><cmd>qa<CR>", opts "Save all buffers and quit")
 
 -- Yank and paste
 map({ "v", "x" }, "<leader>p", '"_dP', opts "Delete w/o storing in register and paste")
@@ -173,6 +170,11 @@ map("n", "glv", chainsaw.variablelog, opts "Log name & value under cursor")
 map("n", "gla", chainsaw.assertLog, opts "Assersion statement under cursor")
 map("n", "gle", chainsaw.emojiLog, opts "Insert Emoji log")
 map("n", "glr", chainsaw.removeLogs, opts "Remove all logs")
+
+-- TODOs
+local todo = require "todo-comments"
+map("n", "]t", todo.jump_next, opts "Next todo comment")
+map("n", "[t", todo.jump_prev, opts "Previous todo comment")
 
 -- Lazy
 map("n", "<Leader>Ls", "<cmd>Lazy sync<CR>", opts "Lazy sync")
