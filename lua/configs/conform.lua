@@ -11,6 +11,7 @@ conform.setup {
     typescript = { "prettierd", "prettier", stop_after_first = true },
     typescriptreact = { "prettierd", "prettier", stop_after_first = true },
     svelte = { "prettierd", "prettier", stop_after_first = true },
+    svx = { "prettierd", "prettier", stop_after_first = true },
   },
 }
 

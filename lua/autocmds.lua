@@ -60,3 +60,16 @@ autocmd("FileType", {
     vim.opt_local.formatoptions:append "t"
   end,
 })
+
+-- MDsveX
+local mdsvex_group = autogroup("MDsveX_Config", { clear = true })
+autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.svx",
+  command = "set filetype=markdown",
+  group = mdsvex_group,
+})
+autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.svx",
+  command = "set syntax=markdown",
+  group = mdsvex_group,
+})

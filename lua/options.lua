@@ -37,3 +37,12 @@ autocmd("FileType", {
     vim.opt_local.spell = false
   end,
 })
+
+autocmd("FileType", {
+  pattern = { "cairo" },
+  callback = function()
+    o.tabstop = 4
+    o.shiftwidth = 4
+    o.expandtab = true
+  end,
+})

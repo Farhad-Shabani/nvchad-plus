@@ -91,8 +91,6 @@ map(
 )
 map("n", "<leader>fm", "<cmd>Telescope marks<CR>", opts "Telescope marks")
 map("n", "<leader>fj", "<cmd>Telescope jumplist<CR>", opts "Telescope jumplist")
-map("n", "<leader>fi", "<cmd>Telescope gh issues<CR>", opts "Telescope gh issues")
-map("n", "<leader>fp", "<cmd>Telescope gh pull_request<CR>", opts "Telescope gh pull requests")
 map("n", "[c", function()
   require("treesitter-context").go_to_context(vim.v.count1)
 end, opts "Go to context")
@@ -101,7 +99,7 @@ end, opts "Go to context")
 local list = require("harpoon"):list()
 local harpoon_maps = {
   hl = function()
-    require("configs.nav").toggle_harpoon(list)
+    require("configs.nav").toggle_telescope(list)
   end,
   ha = function()
     list:add()
@@ -142,7 +140,7 @@ map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", opts "Debugger ru
 map("n", "<Leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts "Show diagnostics float")
 map("n", "<leader>fq", "<cmd>Telescope quickfix<CR>", opts "Telescope quickfix")
 map("n", "<leader>ls", "<cmd>Telescope spell_suggest<CR>", opts "Telescope spell suggest")
-map("n", "<leader>ld", "<cmd>Telescope diagnostics<CR>", opts "Telescope diagnostics")
+map("n", "<leader>le", "<cmd>Telescope diagnostics<CR>", opts "Telescope diagnostics")
 
 -- LSP
 map("n", "<leader>lr", "<cmd>Telescope lsp_references<CR>", opts "Telescope references")
