@@ -10,4 +10,13 @@ return {
       require("harpoon").setup {}
     end,
   },
+
+  {
+    "Isrothy/neominimap.nvim",
+    version = "v3.*.*",
+    enabled = true,
+    cmd = {
+      "Neominimap",
+    },
+  },
 }
