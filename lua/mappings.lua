@@ -9,14 +9,14 @@ end
 -- Exit
 map("i", "jk", "<ESC>")
 map("n", "<leader>jk", "<cmd>nohl<CR>", opts "Clear search highlight")
-map({ "n", "i", "t" }, "<leader>q", "<cmd>q<CR>", opts "Close buffer")
-map({ "n", "i" }, "<leader>X", "<cmd>tabclose<CR>", opts "Close tab")
+map("n", "<leader>q", "<cmd>q<CR>", opts "Close buffer")
+map("n", "<leader>X", "<cmd>tabclose<CR>", opts "Close tab")
 -- map("t", "<Esc>", [[<C-\><C-n>]], opts "Exit terminal view")
 
 -- Save
 map({ "n", "i" }, "<C-s>", "<cmd>w<CR>", opts "Save buffer")
 map(
-  { "n", "i" },
+  "n",
   "<leader>w",
   '<cmd>w<CR><cmd>:lua require("nvchad.tabufline").close_buffer()<CR>',
   opts "Save buffer and close"
@@ -149,11 +149,11 @@ map("n", "<leader>le", "<cmd>Telescope diagnostics<CR>", opts "Telescope diagnos
 
 -- LSP
 map("n", "<leader>lr", "<cmd>Telescope lsp_references<CR>", opts "Telescope references")
-map("n", "<leader>lI", "<cmd>Telescope lsp_implementations<CR>", opts "Telescope implementations")
+map("n", "<leader>li", "<cmd>Telescope lsp_implementations<CR>", opts "Telescope implementations")
 map("n", "<leader>ld", "<cmd>Telescope lsp_definitions<CR>", opts "Telescope definitions")
 map("n", "<leader>lt", "<cmd>Telescope lsp_type_definitions<CR>", opts "Telescope type definitions")
-map("n", "<leader>li", "<cmd>Telescope lsp_incoming_calls<CR>", opts "Telescope incoming calls")
-map("n", "<leader>lo", "<cmd>Telescope lsp_outgoing_calls<CR>", opts "Telescope outgoing calls")
+map("n", "<leader>lI", "<cmd>Telescope lsp_incoming_calls<CR>", opts "Telescope incoming calls")
+map("n", "<leader>lO", "<cmd>Telescope lsp_outgoing_calls<CR>", opts "Telescope outgoing calls")
 map("n", "<leader>ls", "<cmd>Telescope lsp_workspace_symbols<CR>", opts "Telescope workspace symbols")
 map("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts "Telescope dynamic workspace symbols")
 map("n", "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts "Declaration of current symbol")

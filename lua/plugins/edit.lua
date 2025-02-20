@@ -5,6 +5,7 @@ return {
     opts = {
       throttle = true,
       max_lines = 0,
+      multiline_threshold = 1,
       patterns = {
         default = {
           "class",
