@@ -5,6 +5,21 @@ return {
   },
 
   {
+    "folke/zen-mode.nvim",
+    event = "VeryLazy",
+    cmd = { "ZenMode" },
+    opts = {
+      plugins = {
+        options = {
+          ruler = true,
+          number = true,
+          relativenumber = true,
+        },
+      },
+    },
+  },
+
+  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd = { "TodoQuickFix", "TodoLocList", "TodoTelescope" },

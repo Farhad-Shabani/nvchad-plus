@@ -38,7 +38,7 @@ map("n", "<C-d>", "<C-d>zz", opts "Scroll down and recenter")
 map("n", "<C-u>", "<C-u>zz", opts "Scroll down and recenter")
 
 -- Select all
-map({ "n", "i" }, "<C-a>", "<cmd>norm ggVG<cr>", opts "Select all text in the buffer")
+map({ "n" }, "<leader>a", "<cmd>norm ggVG<cr>", opts "Select all text in the buffer")
 
 -- Move lines
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
@@ -47,10 +47,6 @@ map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
 map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
-
--- Increase/Decrease numbers
-map("n", "<leader>+", "<C-a>", opts "Increase number")
-map("n", "<leader>-", "<C-x>", opts "Increase number")
 
 -- Resize windows
 map("n", "<A-C-l>", "<cmd>vertical resize -2<cr>", opts "Decrease Window Width")
@@ -63,6 +59,9 @@ map("n", "<leader>sv", "<C-w>v", opts "Split window vertically")
 map("n", "<leader>sh", "<C-w>s", opts "Split window horizontally")
 map("n", "<leader>se", "<C-w>=", opts "Make splits equal size")
 map("n", "<leader>sx", "<cmd>close<CR>", opts "Close current split")
+
+-- ZenMode
+map("n", "<leader>z", "<cmd>ZenMode<CR>", opts "Toggle ZenMode")
 
 -- Find
 map("n", "<Leader>f", "<cmd>Telescope resume<CR>", opts "Telescope resume last search")
@@ -125,6 +124,9 @@ map("n", "<leader>nr", "<cmd>Neominimap refresh<CR>", opts "Refresh global minim
 map("n", "<leader>no", "<cmd>Neominimap on<CR>", opts "Enable global minimap")
 map("n", "<leader>nc", "<cmd>Neominimap off<CR>", opts "Disable global minimap")
 map("n", "<leader>nb", "<cmd>Neominimap bufToggle<CR>", opts "Toggle minimap for current buffer")
+map({ "n", "t" }, "<leader>-", "<cmd>Yazi<cr>", opts "Yazi open at the current file")
+map({ "n", "t" }, "<leader>cw", "<cmd>Yazi cwd<cr>", opts "Yazi open the file manager in nvim's working directory")
+map({ "n", "t" }, "<leader>cr", "<cmd>Yazi toggle<cr>", opts "Yazi resume the last session")
 
 -- Debugging
 map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", opts "Debugger step into")
@@ -142,7 +144,7 @@ map("n", "<Leader>de", "<cmd>lua require'dap'.terminate()<CR>", opts "Debugger r
 map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", opts "Debugger run last")
 
 -- Diagnostics
-map("n", "<Leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts "Show diagnostics float")
+map("n", "<Leader>e", vim.diagnostic.open_float, opts "Show diagnostics float")
 map("n", "<leader>fq", "<cmd>Telescope quickfix<CR>", opts "Telescope quickfix")
 map("n", "<leader>ls", "<cmd>Telescope spell_suggest<CR>", opts "Telescope spell suggest")
 map("n", "<leader>le", "<cmd>Telescope diagnostics<CR>", opts "Telescope diagnostics")
@@ -156,8 +158,9 @@ map("n", "<leader>lI", "<cmd>Telescope lsp_incoming_calls<CR>", opts "Telescope 
 map("n", "<leader>lO", "<cmd>Telescope lsp_outgoing_calls<CR>", opts "Telescope outgoing calls")
 map("n", "<leader>ls", "<cmd>Telescope lsp_workspace_symbols<CR>", opts "Telescope workspace symbols")
 map("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts "Telescope dynamic workspace symbols")
-map("n", "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts "Declaration of current symbol")
-map("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts "Code action")
+map("n", "<leader>lD", vim.lsp.buf.declaration, opts "Declaration of current symbol")
+map("n", "<leader>la", vim.lsp.buf.code_action, opts "Code action")
+map("n", "<leader>rn", vim.lsp.buf.rename, opts "Rename symbol")
 
 -- Rust
 map("n", "<leader>ra", "<cmd>RustLsp codeAction<CR>", opts "Rust code action")

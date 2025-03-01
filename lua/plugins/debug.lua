@@ -70,11 +70,15 @@ return {
     opts = {
       logStatements = {
         debugLog = {
-          cairo = 'println!("{{var}}: {:?}", {{var}});  // 🪚',
-          rust = 'println!("{{var}}: {:?}", {{var}});  // 🪚',
+          cairo = 'println!("{{var}}: {:?}", {{var}});  // {{marker}}',
+          rust = 'println!("{{var}}: {:?}", {{var}});  // {{marker}}',
+          svelte = '$inspect("{{marker}} {{var}}:", {{var}});',
         },
         emojiLog = {
-          cairo = 'println!("CHECKPOINT!");  // 🪚',
+          cairo = 'println!("CHECKPOINT!");  // {{marker}}',
+        },
+        messageLog = {
+          svelte = 'console.log("{{marker}} {{var}}:", {{var}});',
         },
       },
     },
