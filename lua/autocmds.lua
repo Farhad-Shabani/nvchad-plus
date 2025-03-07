@@ -21,7 +21,7 @@ autocmd("BufWritePre", {
 
 autocmd("BufDelete", {
   callback = function()
-    local bufs = vim.t.bufs
+    local bufs = vim.t.bufs or {}
     if #bufs == 1 and vim.api.nvim_buf_get_name(bufs[1]) == "" then
       vim.cmd "Nvdash"
     end
