@@ -4,7 +4,10 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-    config = true,
+    config = function()
+      dofile(vim.g.base46_cache .. "diffview")
+      require("diffview").setup()
+    end,
     cmd = {
       "DiffviewOpen",
       "DiffviewClose",
@@ -58,15 +61,9 @@ return {
     version = "*",
     event = "VeryLazy",
     config = function()
-      require("configs.git").conflict_hl()
+      dofile(vim.g.base46_cache .. "git-conflict")
       require("git-conflict").setup {
         default_mappings = true,
-        highlights = {
-          incoming = "GitConflictIncoming",
-          current = "GitConflictCurrent",
-          ancestor = "GitConflictAncestor",
-          none = "GitConflictNone",
-        },
       }
     end,
   },

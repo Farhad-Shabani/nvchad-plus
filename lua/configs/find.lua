@@ -26,6 +26,16 @@ function M.telescope()
         },
         n = { ["<C-t>"] = require("trouble.sources.telescope").open, ["<C-x>"] = close_term },
       },
+      vimgrep_arguments = {
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "-F", -- added: use fixed-string search so you don't need to escape parentheses
+      },
     },
     extensions = {
       fuzzy = true,

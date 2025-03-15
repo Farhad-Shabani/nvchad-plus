@@ -1,8 +1,23 @@
 local g = vim.g
 
-g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 g.mapleader = " "
 g.maplocalleader = "\\"
+
+g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+
+-- load themes and integrations
+dofile(g.base46_cache .. "defaults")
+dofile(g.base46_cache .. "syntax")
+dofile(g.base46_cache .. "statusline")
+dofile(g.base46_cache .. "bufferline")
+dofile(g.base46_cache .. "cmp")
+dofile(g.base46_cache .. "dap")
+dofile(g.base46_cache .. "devicons")
+dofile(g.base46_cache .. "nvimtree")
+dofile(g.base46_cache .. "telescope")
+dofile(g.base46_cache .. "treesitter")
+dofile(g.base46_cache .. "tbline")
+dofile(g.base46_cache .. "git")
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"

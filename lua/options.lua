@@ -5,10 +5,6 @@ g.markdown_fenced_languages = {
   "ts=typescript",
 }
 
--- load theme
-dofile(g.base46_cache .. "defaults")
-dofile(g.base46_cache .. "statusline")
-
 o.cursorlineopt = "both"
 o.relativenumber = true
 o.number = true

@@ -3,7 +3,6 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     event = "BufReadPost",
     opts = {
-      throttle = true,
       max_lines = 0,
       multiline_threshold = 1,
       patterns = {

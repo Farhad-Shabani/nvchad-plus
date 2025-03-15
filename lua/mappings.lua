@@ -10,7 +10,7 @@ end
 map("i", "jk", "<ESC>")
 map("n", "<leader>jk", "<cmd>nohl<CR>", opts "Clear search highlight")
 map("n", "<leader>q", "<cmd>q<CR>", opts "Close buffer")
-map("n", "<leader>X", "<cmd>tabclose<CR>", opts "Close tab")
+map("n", "<A-w>", "<cmd>tabclose<CR>", opts "Close tab")
 -- map("t", "<Esc>", [[<C-\><C-n>]], opts "Exit terminal view")
 
 -- Save
@@ -90,7 +90,7 @@ map(
 )
 map("n", "<leader>fm", "<cmd>Telescope marks<CR>", opts "Telescope marks")
 map("n", "<leader>fj", "<cmd>Telescope jumplist<CR>", opts "Telescope jumplist")
-map("n", "[c", function()
+map("n", "[C", function()
   require("treesitter-context").go_to_context(vim.v.count1)
 end, opts "Go to context")
 
@@ -198,16 +198,16 @@ map("n", "<Leader>op", "<cmd>Octo pr list<CR>", opts "Octo PR list")
 map("n", "<Leader>or", "<cmd>Octo review<CR>", opts "Octo review")
 
 local gitsigns = require "gitsigns"
-map("n", "]h", function()
+map("n", "]c", function()
   if vim.wo.diff then
-    vim.cmd.normal { "]h", bang = true }
+    vim.cmd.normal { "]c", bang = true }
   else
     gitsigns.nav_hunk "next"
   end
 end, opts "Gitsigns next git hunk")
-map("n", "[h", function()
+map("n", "[c", function()
   if vim.wo.diff then
-    vim.cmd.normal { "[h", bang = true }
+    vim.cmd.normal { "[c", bang = true }
   else
     gitsigns.nav_hunk "prev"
   end

@@ -37,7 +37,23 @@ end
 local M = {}
 
 M.base46 = {
-  theme = "onedark",
+  integrations = {
+    "bufferline",
+    "cmp",
+    "dap",
+    "devicons",
+    "diffview",
+    "git",
+    "git-conflict",
+    "nvimtree",
+    "syntax",
+    "tbline",
+    "telescope",
+    "todo",
+    "treesitter",
+    "trouble",
+  },
+  theme = "darcula-dark",
 }
 
 M.ui = {
@@ -47,6 +63,16 @@ M.ui = {
   },
 }
 
-M.nvdash = { load_on_startup = true }
+M.nvdash = {
+  load_on_startup = true,
+  header = {
+    [[ _   _      _ _        __        __         _     _ _ ]],
+    [[| | | | ___| | | ___   \ \      / /__  _ __| | __| | |]],
+    [[| |_| |/ _ \ | |/ _ \   \ \ /\ / / _ \| '__| |/ _` | |]],
+    [[|  _  |  __/ | | (_) |   \ V  V / (_) | |  | | (_| |_|]],
+    [[|_| |_|\___|_|_|\___/     \_/\_/ \___/|_|  |_|\__,_(_)]],
+    [[                                                      ]],
+  },
+}
 
 return M
