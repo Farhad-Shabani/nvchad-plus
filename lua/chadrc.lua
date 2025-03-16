@@ -39,7 +39,6 @@ local M = {}
 M.base46 = {
   integrations = {
     "bufferline",
-    "cmp",
     "dap",
     "devicons",
     "diffview",

@@ -16,8 +16,17 @@ return {
     opts = {},
     config = function()
       require("render-markdown").setup {}
-      require("cmp").setup.buffer {
-        sources = { { name = "render-markdown" } },
+      require("blink.cmp").setup {
+        sources = {
+          default = { "lsp", "path", "snippets", "buffer", "markdown" },
+          providers = {
+            markdown = {
+              name = "RenderMarkdown",
+              module = "render-markdown.integ.blink",
+              fallbacks = { "lsp" },
+            },
+          },
+        },
       }
     end,
   },
