@@ -20,6 +20,20 @@ return {
   },
 
   {
+    "lewis6991/gitsigns.nvim",
+    event = "User FilePost",
+    opts = function()
+      require "nvchad.configs.gitsigns"
+      return require("gitsigns").setup {
+        current_line_blame = true,
+        current_line_blame_opts = {
+          delay = 200,
+        },
+      }
+    end,
+  },
+
+  {
     "NeogitOrg/neogit",
     cmd = {
       "Neogit",
