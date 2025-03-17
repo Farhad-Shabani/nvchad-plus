@@ -9,6 +9,8 @@ return {
       completion = {
         list = { selection = { preselect = true, auto_insert = true } },
 
+        accept = { auto_brackets = { enabled = true } },
+
         menu = {
           -- nvim-cmp style menu
           draw = {
@@ -41,6 +43,15 @@ return {
       fuzzy = { implementation = "prefer_rust_with_warning" },
 
       signature = { enabled = true },
+    },
+  },
+
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = {
+      fast_wrap = {},
+      disable_filetype = { "TelescopePrompt", "vim" },
     },
   },
 
