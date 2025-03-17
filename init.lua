@@ -16,7 +16,6 @@ dofile(g.base46_cache .. "nvimtree")
 dofile(g.base46_cache .. "telescope")
 dofile(g.base46_cache .. "treesitter")
 dofile(g.base46_cache .. "tbline")
-dofile(g.base46_cache .. "git")
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"

@@ -56,7 +56,7 @@ function M.telescope()
         -- layout_config = { mirror=true }, -- mirror preview pane
       },
     },
-    extension_list = { "live_grep_args", "fzf", "frequency", "file_browser", "lazygit" },
+    extension_list = { "live_grep_args", "fzf", "frequency", "file_browser", "lazygit", "noice" },
   }
 
   return vim.tbl_deep_extend("force", defaults, configs)
